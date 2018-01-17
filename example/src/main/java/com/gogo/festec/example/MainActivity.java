@@ -3,13 +3,18 @@ package com.gogo.festec.example;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.latte_core.app.Latte;
+import com.example.latte_core.app.activities.ProxyActivity;
+import com.example.latte_core.app.delegates.LatteDelegate;
+
+public class MainActivity extends ProxyActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       // Log.d("","");
+    public LatteDelegate setRootDelegate() {
+        return new ExampleDelegate();
     }
+
+
 }
