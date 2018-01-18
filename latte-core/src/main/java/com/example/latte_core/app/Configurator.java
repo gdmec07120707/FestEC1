@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
+import okhttp3.Interceptor;
+
 /**
  * Created by mayn on 2018/1/17.
  *
@@ -14,8 +16,9 @@ import java.util.WeakHashMap;
 
 public class Configurator {
     //WeakHashMap中的键值对，当不在使用的时候会被系统回收，这里的配置是要贯穿整个App的生命周期的，故只能使用HashMap
-    private static final HashMap<String,Object> LATTE_CONFIGS = new HashMap<>();
+    private static final HashMap<Object,Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICON = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator(){
         //初始化开始
@@ -29,7 +32,7 @@ public class Configurator {
         return Holder.INSTANCE;
     }
 
-    final HashMap<String,Object> getLatteConfigs(){
+    final HashMap<Object,Object> getLatteConfigs(){
         return LATTE_CONFIGS;
     }
 
@@ -78,6 +81,28 @@ public class Configurator {
     }
 
     /**
+     * 单个拦截器
+     * @param interceptor
+     * @return
+     */
+    public final Configurator withInterceptor(Interceptor interceptor){
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR,INTERCEPTORS);
+        return this;
+    }
+
+    /**
+     * 多个拦截器
+     * @param interceptors
+     * @return
+     */
+    public final Configurator withInterceptor(ArrayList<Interceptor> interceptors){
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR,INTERCEPTORS);
+        return this;
+    }
+
+    /**
      * 检查配置项
      */
     private void checkConfiguration(){
@@ -88,8 +113,12 @@ public class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key){
+    final <T> T getConfiguration(Object key){
         checkConfiguration();
-        return (T) LATTE_CONFIGS.get(key.name());
+        final Object value = LATTE_CONFIGS.get(key);
+        if(value == null){
+            throw new NullPointerException(key.toString()+" IS NULL");
+        }
+        return (T)LATTE_CONFIGS.get(key);
     }
 }

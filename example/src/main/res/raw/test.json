@@ -1,0 +1,9 @@
+{
+  "animals":{
+    "dog":[
+      {"name":"Rufus","breed":"labrador","count":1,"twoFeet":false},
+      {"name":"Marty","breed":"whippet","count":1,"twoFeet":false}
+    ],
+    "cat":{"name":"Matilda"}
+  }
+}

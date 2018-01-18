@@ -10,5 +10,7 @@ public enum ConfigType {
     API_HOST,
     APPLICATION_CONTEXT,
     CONFIG_READY,   //控制初始化完成状态
-    ICON
+    ICON,
+    LOADER_DELAYED,
+    INTERCEPTOR
 }
