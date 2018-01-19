@@ -50,6 +50,11 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder params(String key, Object value) {
+        PARAMS.put(key, value);
+        return this;
+    }
+
     public final RestClientBuilder file(File file) {
         this.mFile = file;
         return this;
