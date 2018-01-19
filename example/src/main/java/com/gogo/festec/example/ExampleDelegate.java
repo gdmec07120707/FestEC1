@@ -5,11 +5,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.latte_core.app.delegates.LatteDelegate;
-import com.example.latte_core.app.net.RestClient;
-import com.example.latte_core.app.net.callback.IError;
-import com.example.latte_core.app.net.callback.IFailure;
-import com.example.latte_core.app.net.callback.ISuccess;
+import com.example.latte_core.delegates.LatteDelegate;
+import com.example.latte_core.net.RestClient;
+import com.example.latte_core.net.callback.IError;
+import com.example.latte_core.net.callback.IFailure;
+import com.example.latte_core.net.callback.ISuccess;
 
 /**
  * Created by mayn on 2018/1/17.
