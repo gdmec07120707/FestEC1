@@ -11,6 +11,8 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
  * Created by mayn on 2018/1/17.
+ * 京东云服务器
+ * http://117.48.203.104:8089/RestServer/data/user_profile.json
  */
 
 public class ExampleApp extends Application {
@@ -18,7 +20,7 @@ public class ExampleApp extends Application {
     public void onCreate() {
         super.onCreate();
         Latte.init(this)
-                .withApiHost("http://127.0.0.1/")
+                .withApiHost("http://117.48.203.104:8089/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
