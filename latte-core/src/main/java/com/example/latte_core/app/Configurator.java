@@ -1,5 +1,7 @@
 package com.example.latte_core.app;
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -99,6 +101,36 @@ public class Configurator {
     public final Configurator withInterceptor(ArrayList<Interceptor> interceptors){
         INTERCEPTORS.addAll(interceptors);
         LATTE_CONFIGS.put(ConfigType.INTERCEPTOR,INTERCEPTORS);
+        return this;
+    }
+
+    /**
+     * 配置微信id
+     * @param appId
+     * @return
+     */
+    public final Configurator withWeChatAppId(String appId){
+        LATTE_CONFIGS.put(ConfigType.WE_CHAT_APP_ID,appId);
+        return this;
+    }
+
+    /**
+     * 配置微信Secret
+     * @param appSecret
+     * @return
+     */
+    public final Configurator withWeChatSecret(String appSecret){
+        LATTE_CONFIGS.put(ConfigType.WE_CHAT_APP_SECRET,appSecret);
+        return this;
+    }
+
+    /**
+     * 配置当前Activity
+     * @param activity
+     * @return
+     */
+    public final Configurator withActivity(Activity activity){
+        LATTE_CONFIGS.put(ConfigType.ACTIVITY,activity);
         return this;
     }
 

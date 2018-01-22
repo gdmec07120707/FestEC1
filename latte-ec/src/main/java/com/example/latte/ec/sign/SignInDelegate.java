@@ -20,6 +20,8 @@ import com.example.latte_core.delegates.LatteDelegate;
 import com.example.latte_core.net.RestClient;
 import com.example.latte_core.net.callback.ISuccess;
 import com.example.latte_core.utils.log.LatteLogger;
+import com.example.latte_core.wechat.LatteWeChat;
+import com.example.latte_core.wechat.callback.IWeChatSignInCallback;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import butterknife.BindView;
@@ -112,8 +114,20 @@ public class SignInDelegate extends LatteDelegate {
         }
     }
 
+    /**
+     * 微信登陸
+     */
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {
+        LatteWeChat
+                .getInstance()
+                .onSignInSuccess(new IWeChatSignInCallback() {
+                    @Override
+                    public void onSignInSuccess(String userInfo) {
+                        Toast.makeText(getContext(), userInfo, Toast.LENGTH_LONG).show();
+                    }
+                })
+                .singIn();
 
     }
 

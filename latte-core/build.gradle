@@ -76,4 +76,7 @@ dependencies {
     //Log
     compile 'com.orhanobut:logger:2.1.1'
 
+    //微信依赖带统计
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
 }

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.gogo.festec.example"
+        applicationId "com.yueji.youlebao"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1

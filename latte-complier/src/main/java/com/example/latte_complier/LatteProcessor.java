@@ -54,7 +54,6 @@ public final class LatteProcessor extends AbstractProcessor {
     }
 
     /**
-     * 开始扫描
      * @param env
      * @param annotation
      * @param visitor
