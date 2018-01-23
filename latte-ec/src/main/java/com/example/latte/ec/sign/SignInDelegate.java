@@ -18,6 +18,7 @@ import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
 import com.example.latte_core.delegates.LatteDelegate;
 import com.example.latte_core.net.RestClient;
+import com.example.latte_core.net.callback.IFailure;
 import com.example.latte_core.net.callback.ISuccess;
 import com.example.latte_core.utils.log.LatteLogger;
 import com.example.latte_core.wechat.LatteWeChat;
@@ -98,7 +99,7 @@ public class SignInDelegate extends LatteDelegate {
     void onClickSignIn() {
         if (checkForm()) {
             RestClient.builder()
-                    .url("http://192.168.254.145/RestServer/data/user_profile.json")
+                    .url("http://117.48.203.104:8089/RestServer/data/user_profile.json")
                     .params("email", mEmail.getText().toString())
                     .params("password", mPassword.getText().toString())
                     .success(new ISuccess() {
@@ -108,6 +109,12 @@ public class SignInDelegate extends LatteDelegate {
                             LatteLogger.json("USER_PROFILE",response);
                             Toast.makeText(getContext(),response,Toast.LENGTH_LONG).show();
                             SignHandler.onSignIn(response,signListener);
+                        }
+                    })
+                    .failure(new IFailure() {
+                        @Override
+                        public void onFailure() {
+                            Toast.makeText(getContext(),"错误",Toast.LENGTH_LONG).show();
                         }
                     })
                     .build().post();
