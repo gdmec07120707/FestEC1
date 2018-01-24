@@ -76,6 +76,33 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,Base
 
     }
 
+    private void paging(final String url){
+        final int pageSize = BEAN.getPageSize();
+        final int currentCount = BEAN.getCurrentCount();
+        final int total = BEAN.getTotal();
+        final int index = BEAN.getPageIndex();
+
+        if(mAdapter.getData().size()<pageSize || currentCount >= total){
+            mAdapter.loadMoreEnd();;
+        }else{
+           RestClient.builder()
+                   .url(url+index)
+                   .success(new ISuccess() {
+                       @Override
+                       public void onSuccess(String response) {
+                           LatteLogger.json("paging",response);
+                           CONVERTER.clearData();
+                           mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                           BEAN.setCurrentCount(mAdapter.getData().size());
+                           mAdapter.loadMoreComplete();
+                           BEAN.addIndex();
+                       }
+                   })
+                   .build()
+                   .get();
+        }
+    }
+
     @Override
     public void onRefresh() {
         refresh();
@@ -83,6 +110,6 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,Base
 
     @Override
     public void onLoadMoreRequested() {
-
+        paging("refresh.php?index=");
     }
 }
