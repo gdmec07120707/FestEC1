@@ -1,6 +1,7 @@
 package com.example.latte_core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.HashMap;
 import java.util.WeakHashMap;
@@ -28,5 +29,13 @@ public final class Latte {
 
     public static Context getApplicationContext(){
         return getConfiguration(ConfigType.APPLICATION_CONTEXT);
+    }
+
+    /**
+     * 获取全局的Handler
+     * @return
+     */
+    public static Handler getHandler(){
+        return getConfiguration(ConfigType.HANDLER);
     }
 }

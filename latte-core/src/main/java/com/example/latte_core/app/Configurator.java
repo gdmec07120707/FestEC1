@@ -1,9 +1,12 @@
 package com.example.latte_core.app;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +22,14 @@ import okhttp3.Interceptor;
 public class Configurator {
     //WeakHashMap中的键值对，当不在使用的时候会被系统回收，这里的配置是要贯穿整个App的生命周期的，故只能使用HashMap
     private static final HashMap<Object,Object> LATTE_CONFIGS = new HashMap<>();
+    private static final Handler HANDLER = new Handler();
     private static final ArrayList<IconFontDescriptor> ICON = new ArrayList<>();
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator(){
         //初始化开始
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(),false);
+        LATTE_CONFIGS.put(ConfigType.HANDLER,HANDLER);
     }
 
     /**
@@ -50,6 +55,7 @@ public class Configurator {
      */
     public final void configure(){
         initIcons();
+        Logger.addLogAdapter(new AndroidLogAdapter());
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(),true);
     }
 

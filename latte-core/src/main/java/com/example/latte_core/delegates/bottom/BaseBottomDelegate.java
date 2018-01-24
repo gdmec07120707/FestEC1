@@ -4,22 +4,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-
 import com.example.latte_core.R;
 import com.example.latte_core.R2;
 import com.example.latte_core.delegates.LatteDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import me.yokeyword.fragmentation.ISupportFragment;
 
