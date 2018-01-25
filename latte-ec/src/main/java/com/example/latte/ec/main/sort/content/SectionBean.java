@@ -1,6 +1,4 @@
 package com.example.latte.ec.main.sort.content;
-
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.SectionEntity;
 
 /**

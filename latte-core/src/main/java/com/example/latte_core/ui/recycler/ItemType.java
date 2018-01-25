@@ -2,6 +2,7 @@ package com.example.latte_core.ui.recycler;
 
 /**
  * Created by mayn on 2018/1/24.
+ * RecyclerView对于的类型
  */
 
 public class ItemType {

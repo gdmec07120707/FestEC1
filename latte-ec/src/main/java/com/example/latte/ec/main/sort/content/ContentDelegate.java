@@ -18,6 +18,7 @@ import butterknife.BindView;
 
 /**
  * Created by mayn on 2018/1/24.
+ *
  */
 
 public class ContentDelegate extends LatteDelegate {
@@ -59,6 +60,7 @@ public class ContentDelegate extends LatteDelegate {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
+                        //接受到数据后想到Converter中转化成列别需要的数据格式，传入到适配器中
                         mData = new SectionDataConverter().convert(response);
                         final SectionAdapter sectionAdapter = new SectionAdapter(R.layout.item_section_content,
                                 R.layout.item_section_header, mData);

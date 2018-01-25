@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by mayn on 2018/1/24.
+ * 基础数据转换器
  */
 
 public abstract class DataConverter {

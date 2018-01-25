@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Created by mayn on 2018/1/24.
+ * MultipleEntity建造者
  */
 
 public class MultipleEntityBuilder {
