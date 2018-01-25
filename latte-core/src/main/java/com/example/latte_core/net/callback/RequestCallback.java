@@ -62,12 +62,13 @@ public class RequestCallback implements Callback {
     private void onRequestFinish(){
         //final long
         if(LOADER_STYLE!=null){
-            HANDLER.postDelayed(new Runnable() {
+            /*HANDLER.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    LatteLoader.stopLoading();
+
                 }
-            },1000);
+            },1000);*/
+            LatteLoader.stopLoading();
         }
     }
 }

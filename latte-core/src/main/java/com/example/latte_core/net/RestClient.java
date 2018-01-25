@@ -85,6 +85,7 @@ public class RestClient {
         switch (mothod) {
             case GET:
                 call = service.get(URL, PARAMS);
+                break;
             case POST:
                 call = service.post(URL, PARAMS);
                 break;
