@@ -40,6 +40,10 @@ public abstract class BaseDelegate extends SwipeBackFragment{
         return rootView;
     }
 
+    /**
+     * 避免内存重启，getActivity()空指针
+     * @return
+     */
     public final ProxyActivity getProxyActivity() {
         return (ProxyActivity) _mActivity;
     }

@@ -3,13 +3,9 @@ package com.example.latte.ec.main.discover;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-
 import com.example.latte.ec.R;
-import com.example.latte.ec.main.EcBottomDelegate;
 import com.example.latte_core.delegates.bottom.BottomItemDelegate;
-import com.example.latte_core.delegates.web.WebDelegate;
 import com.example.latte_core.delegates.web.WebDelegateImpl;
-
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
@@ -33,7 +29,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        final WebDelegateImpl delegate = WebDelegateImpl.create("http://117.48.203.104:8088/activity.html");
+        final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
         delegate.setTopDelegate(this.getParentDelegate());
         getSupportDelegate().loadRootFragment(R.id.web_discover_container, delegate);
 

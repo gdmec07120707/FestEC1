@@ -5,6 +5,7 @@ import android.app.Application;
 import com.example.latte.ec.database.DatabaseManager;
 import com.example.latte.ec.icon.FontEcModule;
 import com.example.latte_core.app.Latte;
+import com.example.latte_core.delegates.web.event.TestEvent;
 import com.example.latte_core.net.interceptor.DebugInterceptor;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
@@ -27,6 +28,7 @@ public class ExampleApp extends Application {
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withWeChatAppId("微信id")
                 .withWeChatSecret("微信Secret")
+                .withWebEvent("test", new TestEvent())
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);

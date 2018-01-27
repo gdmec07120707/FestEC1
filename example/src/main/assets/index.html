@@ -10,4 +10,21 @@
 </head>
 <body>
     <label>发现详情</label>
+
+    <button id="test">测试时间</button>
+<script>
+    function nativeCall(){
+        alert("native call web test")
+    }
+
+    document.getElementById("test").onclick = function(){
+        var json = {
+                action: "test"
+            };
+    //latte对应java代码中的addJavascriptInterface中的名称
+    latte.event(JSON.stringify(json));
+
+};
+ </script>
 </body>
+</html>
