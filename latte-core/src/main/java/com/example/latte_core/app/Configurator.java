@@ -11,6 +11,8 @@ import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import org.greenrobot.greendao.annotation.NotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.WeakHashMap;
@@ -113,6 +115,11 @@ public class Configurator {
     public final Configurator withInterceptor(ArrayList<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
         LATTE_CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withJavaScriptInterface(@NotNull String name){
+        LATTE_CONFIGS.put(ConfigType.JAVASCRIPT_INTERFACE,name);
         return this;
     }
 

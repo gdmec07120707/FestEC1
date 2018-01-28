@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.webkit.WebView;
 
+import com.example.latte_core.app.ConfigType;
+import com.example.latte_core.app.Latte;
 import com.example.latte_core.delegates.LatteDelegate;
 import com.example.latte_core.delegates.web.route.RouteKeys;
 
@@ -57,7 +59,8 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());
 
-                mWebView.addJavascriptInterface(LatteWebInterface.create(this),"latte");
+                String name = Latte.getConfiguration(ConfigType.JAVASCRIPT_INTERFACE);
+                mWebView.addJavascriptInterface(LatteWebInterface.create(this),name);
                 mIsWebViewAvailable = true;
             }else{
                 throw  new NullPointerException("Initializer is null!");

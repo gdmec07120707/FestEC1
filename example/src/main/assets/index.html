@@ -9,22 +9,87 @@
     <link rel="stylesheet" href="dist/css/sm-extend.css">
 </head>
 <body>
-    <label>发现详情</label>
+<div class="page-group">
+    <div id="page-facebook-card" class="page">
+        <div class="content">
+            <div class="content-block-title">Facebook卡片</div>
+            <div class="card facebook-card">
+                <div class="card-header no-border">
+                    <div class="facebook-avatar"><img
+                            src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                            width="34" height="34"></div>
+                    <div class="facebook-name">用户一</div>
+                    <div class="facebook-date">星期一 3:47pm</div>
+                </div>
+                <div class="card-content"><img
+                        src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                        width="100%"></div>
+                <div class="card-footer no-border">
+                    <a href="#" class="link">赞</a>
+                    <a href="#" class="link comment">评论</a>
+                    <a href="#" class="link share">分享</a>
+                </div>
+            </div>
+            <div class="card facebook-card">
+                <div class="card-header no-border">
+                    <div class="facebook-avatar"><img
+                            src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                            width="34" height="34"></div>
+                    <div class="facebook-name">用户2</div>
+                    <div class="facebook-date">星期一 3:47pm</div>
+                </div>
+                <div class="card-content"><img
+                        src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                        width="100%"></div>
+                <div class="card-footer no-border">
+                    <a href="#" class="link">赞</a>
+                    <a href="#" class="link comment">评论</a>
+                    <a href="#" class="link share">分享</a>
+                </div>
+            </div>
 
-    <button id="test">测试时间</button>
-<script>
-    function nativeCall(){
-        alert("native call web test")
-    }
+            <div class="card facebook-card">
+                <div class="card-header no-border">
+                    <div class="facebook-avatar"><img
+                            src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                            width="34" height="34"></div>
+                    <div class="facebook-name">fangdingjie</div>
+                    <div class="facebook-date">2018-1-28 3:47pm</div>
+                </div>
+                <div class="card-content"><img
+                        src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                        width="100%"></div>
+                <div class="card-footer no-border">
+                    <a href="#" class="link">赞</a>
+                    <a href="#" class="link comment">评论</a>
+                    <a href="#" class="link share">分享</a>
+                </div>
+            </div>
 
-    document.getElementById("test").onclick = function(){
-        var json = {
-                action: "test"
-            };
-    //latte对应java代码中的addJavascriptInterface中的名称
-    latte.event(JSON.stringify(json));
+            <div class="card facebook-card">
+                <div class="card-header no-border">
+                    <div class="facebook-avatar"><img
+                            src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                            width="34" height="34"></div>
+                    <div class="facebook-name">fang</div>
+                    <div class="facebook-date">星期一 3:47pm</div>
+                </div>
+                <div class="card-content"><img
+                        src="http://i9.qhimg.com/t017d891ca365ef60b5.jpg"
+                        width="100%"></div>
+                <div class="card-footer no-border">
+                    <a href="#" class="link">赞</a>
+                    <a href="#" class="link comment">评论</a>
+                    <a href="#" class="link share">分享</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-};
- </script>
+</div>
+<script src="assets/zepto.js"></script>
+<script src="dist/js/sm.js"></script>
+<script src="dist/js/sm-extend.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
