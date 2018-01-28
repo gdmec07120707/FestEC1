@@ -30,7 +30,7 @@ public class ExampleApp extends Application {
                 .withWeChatSecret("微信Secret")
                 .withWebEvent("test", new TestEvent())
                 .configure();
-        initStetho();
+        //initStetho();
         DatabaseManager.getInstance().init(this);
     }
 

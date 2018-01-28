@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FestEC.iml" filepath="$PROJECT_DIR$/FestEC.iml" />
+      <module fileurl="file://D:\gogo_studio\FestEC1\FestEC.iml" filepath="D:\gogo_studio\FestEC1\FestEC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FestEC1.iml" filepath="$PROJECT_DIR$/FestEC1.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-annotations/latte-annotations.iml" filepath="$PROJECT_DIR$/latte-annotations/latte-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-complier/latte-complier.iml" filepath="$PROJECT_DIR$/latte-complier/latte-complier.iml" />
