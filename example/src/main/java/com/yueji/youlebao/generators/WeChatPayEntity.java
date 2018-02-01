@@ -12,7 +12,7 @@ import com.example.latte_core.wechat.templates.WXEntryTemplate;
 @SuppressWarnings("unused")
 @PayEntryGenelator(
         packageName = "com.yueji.youlebao",
-        payEntryTemplate = AppRegisterTemplate.class
+        payEntryTemplate = WXEntryTemplate.class
 )
 public interface WeChatPayEntity {
 }

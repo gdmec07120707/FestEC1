@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
+import com.example.latte.ec.pay.FastPay;
+import com.example.latte.ec.pay.IAlPayResultListener;
 import com.example.latte_core.delegates.bottom.BottomItemDelegate;
 import com.example.latte_core.net.RestClient;
 import com.example.latte_core.net.callback.ISuccess;
@@ -30,7 +32,7 @@ import butterknife.OnClick;
  * Created by mayn on 2018/1/31.
  */
 
-public class ShopCartDelegate extends BottomItemDelegate implements ISuccess{
+public class ShopCartDelegate extends BottomItemDelegate implements ISuccess,IAlPayResultListener{
     private ShopCartAdapter mAdapter = null;
 
     @BindView(R2.id.rv_shop_cart)
@@ -159,5 +161,37 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess{
         checkItemCount();
     }
 
+    @OnClick(R2.id.tv_shop_cart_pay)
+    void onClickPay() {
+        FastPay.create(ShopCartDelegate.this)
+                .setOrderID(123456789)
+                .setPayResultListener(this)
+                .beginPayDialog();
+    }
 
+
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
+    }
 }
