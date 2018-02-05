@@ -40,4 +40,5 @@ dependencies {
 
     //圆形图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile project(path: ':latte-ui')
 }
