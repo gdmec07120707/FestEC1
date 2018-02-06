@@ -7,9 +7,14 @@ import com.example.latte.ec.icon.FontEcModule;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.delegates.web.event.TestEvent;
 import com.example.latte_core.net.interceptor.DebugInterceptor;
+import com.example.latte_core.utils.callback.CallbackManager;
+import com.example.latte_core.utils.callback.CallbackType;
+import com.example.latte_core.utils.callback.IGlobalCallback;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.yueji.youlebao.R;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by mayn on 2018/1/17.
@@ -33,6 +38,30 @@ public class ExampleApp extends Application {
                 .configure();
         //initStetho();
         DatabaseManager.getInstance().init(this);
+
+        //开启极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
+        CallbackManager.getIntance()
+                .addCallback(CallbackType.TAG_OPEN_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(Object args) {
+                        if (JPushInterface.isPushStopped(Latte.getApplicationContext())) {
+                            //开启极光推送
+                            JPushInterface.setDebugMode(true);
+                            JPushInterface.init(Latte.getApplicationContext());
+                        }
+                    }
+                })
+                .addCallback(CallbackType.TAG_STOP_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(Object args) {
+                        if (!JPushInterface.isPushStopped(Latte.getApplicationContext())) {
+                            JPushInterface.stopPush(Latte.getApplicationContext());
+                        }
+                    }
+                });
     }
 
     private void initStetho() {
