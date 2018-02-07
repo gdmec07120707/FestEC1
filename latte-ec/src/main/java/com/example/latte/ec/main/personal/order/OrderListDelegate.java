@@ -48,7 +48,7 @@ public class OrderListDelegate extends LatteDelegate {
 
         Bundle args = getArguments();
         mType = args.getString(PersonalDelegate.ORDER_TYPE);
-        Toast.makeText(getContext(),mType,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), mType, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -64,6 +64,7 @@ public class OrderListDelegate extends LatteDelegate {
                         final List<MultipleItemEntity> data = new OrderListDataConverter().setJsonData(response).convert();
                         OrderListAdapter mAdapter = new OrderListAdapter(data);
                         mRecyclerView.setAdapter(mAdapter);
+                        mRecyclerView.addOnItemTouchListener(new OrderListClickListener(OrderListDelegate.this));
                     }
                 })
                 .build().get();
