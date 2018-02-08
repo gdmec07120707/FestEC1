@@ -1,4 +1,5 @@
 package com.example.latte.ec.main.index;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -20,11 +21,15 @@ import com.example.latte_core.ui.recycler.BaseDecoration;
 import com.example.latte_core.ui.refresh.RefreshHandler;
 import com.example.latte_core.ui.recycler.MultipleFields;
 import com.example.latte_core.ui.recycler.MultipleItemEntity;
+import com.example.latte_core.utils.callback.CallbackManager;
+import com.example.latte_core.utils.callback.CallbackType;
+import com.example.latte_core.utils.callback.IGlobalCallback;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by mayn on 2018/1/23.
@@ -51,13 +56,22 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mRefreshHandler = RefreshHandler.create(mSwipeRefreshLayout,mRecyclerView,new IndexDataConverter());
+        mRefreshHandler = RefreshHandler.create(mSwipeRefreshLayout, mRecyclerView, new IndexDataConverter());
+
+        CallbackManager.getIntance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(Object args) {
+                        Toast.makeText(getContext(),"扫描结果"+args,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
-    private void initRecyclerView(){
-        final GridLayoutManager manager = new GridLayoutManager(getContext(),4);
+    private void initRecyclerView() {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(),R.color.app_background),2));
+        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
         //获取父布局
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
@@ -71,13 +85,21 @@ public class IndexDelegate extends BottomItemDelegate {
         mRefreshHandler.firstPage("index.php");
     }
 
-    private void initRefreshLayout(){
+    @OnClick(R2.id.icon_index_scan)
+    void onClickScanQrCode() {
+
+        startScanWithCheck(this.getParentDelegate());
+
+
+    }
+
+    private void initRefreshLayout() {
         mSwipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light
         );
-        mSwipeRefreshLayout.setProgressViewOffset(true,120,200);
+        mSwipeRefreshLayout.setProgressViewOffset(true, 120, 200);
     }
 
 }

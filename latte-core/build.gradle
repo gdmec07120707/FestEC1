@@ -87,4 +87,6 @@ dependencies {
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
     //图片剪裁
     compile 'com.github.yalantis:ucrop:2.2.1-native'
+    //二维码扫描
+    compile 'me.dm7.barcodescanner:zbar:1.9.3'
 }
