@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
 import com.example.latte.ec.main.EcBottomDelegate;
+import com.example.latte.ec.main.index.search.SearchDelegate;
 import com.example.latte_core.delegates.bottom.BottomItemDelegate;
 import com.example.latte_core.net.RestClient;
 import com.example.latte_core.net.callback.ISuccess;
@@ -35,7 +36,7 @@ import butterknife.OnClick;
  * Created by mayn on 2018/1/23.
  */
 
-public class IndexDelegate extends BottomItemDelegate {
+public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView;
     @BindView(R2.id.srl_index)
@@ -46,6 +47,7 @@ public class IndexDelegate extends BottomItemDelegate {
     IconTextView iconIndexMessage;
     @BindView(R2.id.tb_index)
     Toolbar tbIndex;
+
 
     private RefreshHandler mRefreshHandler = null;
 
@@ -65,6 +67,7 @@ public class IndexDelegate extends BottomItemDelegate {
                         Toast.makeText(getContext(),"扫描结果"+args,Toast.LENGTH_SHORT).show();
                     }
                 });
+        etSearchView.setOnFocusChangeListener(this);
 
     }
 
@@ -102,4 +105,11 @@ public class IndexDelegate extends BottomItemDelegate {
         mSwipeRefreshLayout.setProgressViewOffset(true, 120, 200);
     }
 
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if(b){
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+        }
+
+    }
 }

@@ -13,6 +13,7 @@ import com.example.latte_core.utils.callback.IGlobalCallback;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.yueji.youlebao.R;
+import com.yueji.youlebao.event.ShareEvent;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -35,6 +36,7 @@ public class ExampleApp extends Application {
                 .withWeChatSecret("微信Secret")
                 .withJavaScriptInterface("latte")
                 .withWebEvent("test", new TestEvent())
+                .withWebEvent("share",new ShareEvent())
                 .configure();
         //initStetho();
         DatabaseManager.getInstance().init(this);

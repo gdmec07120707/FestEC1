@@ -83,16 +83,39 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,Base
         final int index = BEAN.getPageIndex();
 
         if(mAdapter.getData().size()<pageSize || currentCount >= total){
-            mAdapter.loadMoreEnd();;
+            mAdapter.loadMoreEnd();
         }else{
+            Latte.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    RestClient.builder()
+                            .url(url + index)
+                            .success(new ISuccess() {
+                                @Override
+                                public void onSuccess(String response) {
+                                    LatteLogger.json("paging", response);
+                                    CONVERTER.clearData();
+                                    mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                                    //累加数量
+                                    BEAN.setCurrentCount(mAdapter.getData().size());
+                                    mAdapter.loadMoreComplete();
+                                    BEAN.addIndex();
+                                }
+                            } )
+                            .build()
+                            .get();
+                }
+            }, 1000);
+
+
            RestClient.builder()
                    .url(url+index)
                    .success(new ISuccess() {
                        @Override
                        public void onSuccess(String response) {
-                           LatteLogger.json("paging",response);
-                           CONVERTER.clearData();
+                           LatteLogger.json("paging", response);
                            mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                           //累加数量
                            BEAN.setCurrentCount(mAdapter.getData().size());
                            mAdapter.loadMoreComplete();
                            BEAN.addIndex();
